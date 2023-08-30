@@ -1,14 +1,12 @@
 mod args;
+mod gen;
 
-use args::{ComposeArgs, Entity};
 use clap::Parser;
+use args::ComposeArgs;
+use gen::{create_template, generate_code};
 
 fn main() {
     let args = ComposeArgs::parse();
-
-    let props = match args.entity {
-        Entity::Struct(props) => props
-    };
-
-    println!("{:?}", props.name);
+    let (name, template) = create_template(args.entity);
+    generate_code(name, template);
 }
