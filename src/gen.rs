@@ -1,5 +1,5 @@
-use std::{fs::File, path::Path, io::Write};
 use super::args::{Entity, StructProperties};
+use std::{fs::File, io::Write, path::Path};
 
 pub fn create_template(entity: Entity) -> (String, String) {
     let (name, template) = match entity {
@@ -37,5 +37,6 @@ pub fn generate_code(name: String, template: String) -> () {
 
     let filename = format!("{}/{}.rs", output_dir, name);
     let mut file = File::create(&filename).expect("Failed to create file");
-    file.write_all(template.as_bytes()).expect("Failed to write to file");
+    file.write_all(template.as_bytes())
+        .expect("Failed to write to file");
 }

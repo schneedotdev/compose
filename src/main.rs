@@ -1,8 +1,8 @@
 mod args;
 mod gen;
 
-use clap::Parser;
 use args::ComposeArgs;
+use clap::Parser;
 use gen::{create_template, generate_code};
 
 fn main() {
