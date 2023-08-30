@@ -1,9 +1,14 @@
 mod args;
 
-use args::ComposeArgs;
+use args::{ComposeArgs, Entity};
 use clap::Parser;
 
 fn main() {
     let args = ComposeArgs::parse();
-    println!("{:?}", args);
+
+    let props = match args.entity {
+        Entity::Struct(props) => props
+    };
+
+    println!("{:?}", props.name);
 }
