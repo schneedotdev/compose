@@ -1,4 +1,9 @@
+mod args;
+
+use args::ComposeArgs;
+use clap::Parser;
 
 fn main() {
-    println!("hello, world")
+    let args = ComposeArgs::parse();
+    println!("{:?}", args);
 }
